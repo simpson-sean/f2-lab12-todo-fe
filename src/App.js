@@ -10,17 +10,11 @@ import {
   //useParams
 } from "react-router-dom";
 
-// Params are placeholders in the URL that begin
-// with a colon, like the `:id` param defined in
-// the route in this example. A similar convention
-// is used for matching dynamic segments in other
-// popular web frameworks like Rails and Express.
-
 //import APP Components.
 import HomePage from "./HomePage.js";
-import SignUpPage from "./SignUp.js";
+import SignUpPage from "./SignUpPage.js";
 import LoginPage from "./LoginPage.js";
-import ToDo from "./ToDo.js";
+import ToDoPage from "./ToDoPage.js";
 
 const USER_KEY = 'TOKEN'
 
@@ -39,29 +33,30 @@ export default class App extends Component {
         <div>
           <h2>Alchemy ToDo</h2>
           <p><Link to="/">Home</Link></p>
-          <p><Link to="/signin">Sign Up</Link></p>
+          <p><Link to="/signup">Sign Up</Link></p>
           <p><Link to="/login">Login</Link></p>
           <p><Link to="/todo">To-Do List</Link></p>
           <Switch>
             <Route 
-              path="/SignUpPage" 
-              exact
-              render={(routerProps) => <SignUpPage login={this.login} {...routerProps} />} 
-            />
-            <Route 
-              path="/LoginPage" 
-              exact
-              render={(routerProps) => <LoginPage login={this.login} {...routerProps} />} 
-            /> 
-            <Route 
               path="/" 
               exact
               render={(routerProps) => <HomePage {...routerProps} />} 
-            />  
-              <Route 
-              path="/ToDo" 
+            />
+             /> 
+            <Route 
+              path="/signup" 
               exact
-              render={(routerProps) => <ToDo {...routerProps} />} 
+              render={(routerProps) => <SignUpPage {...routerProps} />} 
+            />  
+            <Route 
+              path="/login" 
+              exact
+              render={(routerProps) => <LoginPage login={this.login} {...routerProps} />} 
+            />           
+              <Route 
+              path="/todo" 
+              exact
+              render={(routerProps) => <ToDoPage {...routerProps} />} 
             />             
           </Switch>
         </div>
