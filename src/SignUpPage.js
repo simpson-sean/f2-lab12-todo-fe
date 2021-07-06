@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { signup } from './fetch-utils.js';
 
 export default class SignUpPage extends Component {
 
@@ -18,11 +19,13 @@ export default class SignUpPage extends Component {
 
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
 
-        alert(this.state.email);
-        alert(this.state.password);
+        const token = await signup(this.state.email, this.state.password);
+        this.props.login(token);
+        this.props.history.push('/todo');
+
     }
 
     render() {

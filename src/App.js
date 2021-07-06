@@ -23,11 +23,24 @@ export default class App extends Component {
   state ={
 
     token: localStorage.getItem(USER_KEY)
-  }
+  };
  
+  login = (userToken) => {  
+    this.setState({ token: userToken })
+    localStorage.setItem('USER_KEY', userToken)
+  
+  };
+
+  logout = () => {
+    this.setState({ token: ''})
+    localStorage.setItem('TOKEN', '')
+
+  };
+
+
 
   render() {
-
+    console.log(this.state);
     return (
       <Router>
         <div>
@@ -46,7 +59,7 @@ export default class App extends Component {
             <Route 
               path="/signup" 
               exact
-              render={(routerProps) => <SignUpPage {...routerProps} />} 
+              render={(routerProps) => <SignUpPage login={this.login} {...routerProps} />} 
             />  
             <Route 
               path="/login" 
@@ -56,7 +69,7 @@ export default class App extends Component {
               <Route 
               path="/todo" 
               exact
-              render={(routerProps) => <ToDoPage {...routerProps} />} 
+              render={(routerProps) => <ToDoPage {...routerProps} token={this.state.token}/>} 
             />             
           </Switch>
         </div>

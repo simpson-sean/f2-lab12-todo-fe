@@ -1,26 +1,35 @@
 import request from 'superagent';
 
-export function signup() {
+const URL = "https://f2-lab12-todo-list.herokuapp.com"
+
+export async function signup(email, password) {
+    const data = await request
+        .post(`${URL}/auth/signup`)
+        .send({
+            email: email,
+            password: password,
+        })
+
+    return data.body.token;
+
+}
+
+export async function login() {
 
 
 }
 
-export function login() {
+export async function getTodo() {
 
 
 }
 
-export function getTodo() {
+export async function addTodo() {
 
 
 }
 
-export function addTodo() {
+export async function completeTodo() {
 
 
-}
-
-export function completeTodo() {
-
-    
 }
