@@ -40,7 +40,7 @@ export default class App extends Component {
 
 
   render() {
-    console.log(this.state);
+    //console.log(this.state);
     return (
       <Router>
         <div>
@@ -55,7 +55,6 @@ export default class App extends Component {
               exact
               render={(routerProps) => <HomePage {...routerProps} />} 
             />
-             /> 
             <Route 
               path="/signup" 
               exact
